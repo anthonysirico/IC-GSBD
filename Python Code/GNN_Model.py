@@ -15,17 +15,14 @@ class GCN(torch.nn.Module):
         self.lin = Linear(hidden_channels, 2)
 
     def forward(self, x, edge_index, batch):
-        # 1. Obtain node embeddings
         x = self.conv1(x, edge_index)
         x = x.relu()
         x = self.conv2(x, edge_index)
         x = x.relu()
         x = self.conv3(x, edge_index)
 
-        # 2. Readout layer
-        x = global_mean_pool(x, batch)  # [batch_size, hidden_channels]
+        x = global_mean_pool(x, batch)
 
-        # 3. Apply a final classifier
         x = F.dropout(x, p=0.5, training=self.training)
         x = self.lin(x)
 
