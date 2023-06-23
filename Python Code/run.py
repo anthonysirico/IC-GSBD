@@ -40,15 +40,17 @@ def test(loader):
         correct += int((pred == data.y).sum()) 
     return correct / len(loader.dataset) 
 
-raw_data = loadmat('/workspaces/GDL-for-Engineering-Design/Data/circuit_data.mat', squeeze_me=True)
+raw_data = loadmat('Data/circuit_data.mat', squeeze_me=True)
 data = pd.DataFrame(raw_data['Graphs'])
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 median_performance = []
-n = 5
+n = 5 #number of iterations
 epochs = 600
-p_known = 0.2
-training_split = 0.8
+p_known = 0.2 #what percentage of the known data would you like to use for training?
+training_split = 0.8 #what percentage of the training data would you like to use for training and validation?
+csv_save_path = 'path' #Enter your desired save path for the csv results
+data_save_path = 'path' #Enter the desired save path to store the data
 
 for run in range(0,n):
     seed = random.randint(10000,99999)
@@ -61,8 +63,6 @@ for run in range(0,n):
         optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
         criterion = torch.nn.CrossEntropyLoss()
 
-        # temp_data = data.drop(remove_indices)
-        # temp_data = temp_data.reset_index(drop=True)
 
         if iteration == 0:
 
@@ -92,9 +92,6 @@ for run in range(0,n):
                 unknown_indices = predicted_ones_index
             print('Worked!')
 
-            # known_indices = known_ones_index
-            # unknown_indices = predicted_ones_index
-
         
 
         known_graphs = data.loc[known_indices]
@@ -105,14 +102,14 @@ for run in range(0,n):
         known_median = np.median(known_performance)
 
         try:
-            os.remove('C:/Users/Anthony Sirico/Documents/GitHub/PyGeo_Circuit_exp/PyGeo_Circuit_exp/iterations/known_data/processed/data.pt')
+            os.remove(f'{data_save_path}/known_data/processed/data.pt')
         except OSError as e:
 
             print('Error')
         
         
         try:
-            os.remove('C:/Users/Anthony Sirico/Documents/GitHub/PyGeo_Circuit_exp/PyGeo_Circuit_exp/iterations/unknown_data/processed/data.pt')
+            os.remove(f'{data_save_path}/unknown_data/processed/data.pt')
         except OSError as e:
             print('Error')
         
@@ -130,10 +127,8 @@ for run in range(0,n):
         
         for epoch in tqdm(range(1, epochs + 1), total=epochs):
             train()
-            train_acc = test(training_loader)
-        # train_accuracy.append(train_acc)
-            val_acc = test(validation_loader)
-            #val_accuracy.append(val_acc)
+            train_acc = test(training_loader)       
+            val_acc = test(validation_loader)         
         
 
         
@@ -147,7 +142,7 @@ for run in range(0,n):
             pred = out.argmax(dim=1)
             predictions.append(pred.item())
             unknown_index.append(test_graph.orig_index.item())
-            # y_true.append(test_graph.y.item())
+            
         
         
         predictions = np.array(predictions)
@@ -169,16 +164,16 @@ for run in range(0,n):
         print('Known Zeros: ', len(known_zeros_index))
         
         saved_known_ones = pd.DataFrame(known_ones_index)
-        saved_known_ones.to_csv(f'C:\\Users\\Anthony Sirico\\Documents\\csv_files\\run_{run}_iteration{iteration}_known_ones.csv')
+        saved_known_ones.to_csv(f'{csv_save_path}/run_{run}_iteration{iteration}_known_ones.csv')
 
         saved_known_zeros = pd.DataFrame(known_zeros_index)
-        saved_known_zeros.to_csv(f'C:\\Users\\Anthony Sirico\\Documents\\csv_files\\run_{run}_iteration{iteration}_known_zeros.csv')
+        saved_known_zeros.to_csv(f'{csv_save_path}/run_{run}_iteration{iteration}_known_zeros.csv')
 
         saved_predicted_ones = pd.DataFrame(predicted_ones_index)
-        saved_predicted_ones.to_csv(f'C:\\Users\\Anthony Sirico\\Documents\\csv_files\\run_{run}_iteration{iteration}_predicted_ones.csv')
+        saved_predicted_ones.to_csv(f'{csv_save_path}/run_{run}_iteration{iteration}_predicted_ones.csv')
 
         saved_known_zeros = pd.DataFrame(predicted_zeros_index)
-        saved_known_zeros.to_csv(f'C:\\Users\\Anthony Sirico\\Documents\\csv_files\\run_{run}_iteration{iteration}_predicted_zeros.csv')
+        saved_known_zeros.to_csv(f'{csv_save_path}/run_{run}_iteration{iteration}_predicted_zeros.csv')
 
 
         median_performance.append(known_median)
