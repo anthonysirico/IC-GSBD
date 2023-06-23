@@ -28,7 +28,7 @@ class IterationDataset(InMemoryDataset):
     
     @property
     def raw_file_names(self):
-        return '/workspaces/GDL-for-Engineering-Design/Data/circuit_data.mat'
+        return 'Data/circuit_data.mat'
         
 
     @property
