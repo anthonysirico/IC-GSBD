@@ -2,7 +2,7 @@
 
 Geometric Deep Learning (GDL) is a project that utilizes [PyG](https://github.com/pyg-team/pytorch_geometric) towards graph-based engineering designs.
 
-<img src="Data/drawing.svg" width="800" height="400">
+<img src="data/drawing.svg" width="800" height="400">
 
 It consists of a method that is capable of taking graph-based architectures to include both node-level and graph-level features for the purposes of architecture down-selection through iterative classification.
 The current state of this project and its use is for the purposes of [graph classification](https://paperswithcode.com/task/graph-classification).
