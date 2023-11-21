@@ -35,14 +35,23 @@ Please cite our [conference paper](https://arxiv.org/abs/2303.09770) (and the re
 
 
 ```
-@Inproceedings{SiricoX1,
-  title                    = {On the use of geometric deep learning towards the evaluation of graph-centric engineering systems},
-  Author                   = {Sirico Jr., Anthony and Herber, Daniel R},
-  Booktitle                = {(to appear) ASME 2023 International Design Engineering Technical Conferences},
-  Month                    = aug,
-  Year                     = {2023},
-  Address                  = {Boston, MA, USA},
+@article{10.1115/1.4063659,
+    author = {Sirico, Anthony, Jr. and Herber, Daniel R.},
+    title = "{On the Use of Geometric Deep Learning for the Iterative Classification and Down-Selection of Analog Electric Circuits}",
+    journal = {Journal of Mechanical Design},
+    volume = {146},
+    number = {5},
+    pages = {051703},
+    year = {2023},
+    month = {11},
+    issn = {1050-0472},
+    doi = {10.1115/1.4063659},
+    url = {https://doi.org/10.1115/1.4063659},
+    eprint = {https://asmedigitalcollection.asme.org/mechanicaldesign/article-pdf/doi/10.1115/1.4063659/7060879/md\_146\_5\_051703.pdf},
 }
+
+
+
 ```
 
 If you notice anything unexpected, please open an [issue](https://github.com/anthonysirico/GDL-for-Engineering-Design/issues) and let us know.
