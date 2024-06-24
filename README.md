@@ -1,4 +1,4 @@
-# Geometric Deep Learning for Engineering Design
+# Iterative Classification for Graph-Set-Based Design
 
 Geometric Deep Learning (GDL) is a project that utilizes [PyG](https://github.com/pyg-team/pytorch_geometric) towards graph-based engineering designs.
 
