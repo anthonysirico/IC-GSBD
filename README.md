@@ -1,12 +1,7 @@
 # Iterative Classification for Graph-Set-Based Design
 
-Geometric Deep Learning (GDL) is a project that utilizes [PyG](https://github.com/pyg-team/pytorch_geometric) towards graph-based engineering designs.
-
-<img src="data/drawing.svg" width="800" height="400">
-
-It consists of a method that is capable of taking graph-based architectures to include both node-level and graph-level features for the purposes of architecture down-selection through iterative classification.
-The current state of this project and its use is for the purposes of [graph classification](https://paperswithcode.com/task/graph-classification).
-The method used here was [binary classification](https://www.learndatasci.com/glossary/binary-classification/).
+The methodological framework, Iterative Classification for Graph-Set-Based Design (IC-GSBD) employs an iterative approach to efficiently narrow down a graph-based dataset containing diverse design solutions to identify the most useful options.
+Utilizing Geometric Deep Learning (GDL) through [PyTorch Geometric](https://github.com/pyg-team/pytorch_geometric), we analyze a small subset of the dataset to train a machine learning model which is then used to predict the remainder of the dataset iteratively, progressively narrowing down to the top solutions.
 
 ## Data
 The current data consists of a MATLAB `.m`[^Fn1] file that contains over 43,000 graphs that represent Analog Electric Circuits. 
@@ -31,26 +26,20 @@ Once the files are downloaded, the `run.py` file is the primary script where you
 This project is still ongoing, and more engineering architecture data will become available in the near future.
 
 ## Cite
-Please cite our [conference paper](https://arxiv.org/abs/2303.09770) (and the respective papers of the methods used) if you use this code in your own work:
+Please cite my [dissertation](https://arxiv.org/abs/2303.09770) (and the respective papers of the methods used) if you use this code in your own work:
 
 
 ```
-@article{10.1115/1.4063659,
-    author = {Sirico, Anthony, Jr. and Herber, Daniel R.},
-    title = "{On the Use of Geometric Deep Learning for the Iterative Classification and Down-Selection of Analog Electric Circuits}",
-    journal = {Journal of Mechanical Design},
-    volume = {146},
-    number = {5},
-    pages = {051703},
-    year = {2023},
-    month = {11},
-    issn = {1050-0472},
-    doi = {10.1115/1.4063659},
-    url = {https://doi.org/10.1115/1.4063659},
-    eprint = {https://asmedigitalcollection.asme.org/mechanicaldesign/article-pdf/doi/10.1115/1.4063659/7060879/md\_146\_5\_051703.pdf},
+@phdthesis{Sirico2024c,
+  author    = {Sirico Jr, Anthony},
+  title     = {Integrating geometric deep learning with a set-based design approach for the exploration of graph-based engineering systems},
+  type      = {{Ph.D.} {Dissertation}},
+  school    = {Colorado State University},
+  address   = {Fort Collins, CO, USA},
+  month     = aug,
+  year      = {2024},
+  pdf       = {https://www.engr.colostate.edu/%7Edrherber/files/Sirico2024c.pdf},
 }
-
-
 
 ```
 
