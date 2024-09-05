@@ -4,8 +4,11 @@ The methodological framework, Iterative Classification for Graph-Set-Based Desig
 Utilizing Geometric Deep Learning (GDL) through [PyTorch Geometric](https://github.com/pyg-team/pytorch_geometric), we analyze a small subset of the dataset to train a machine learning model which is then used to predict the remainder of the dataset iteratively, progressively narrowing down to the top solutions.
 
 ## Data
-The current data consists of a MATLAB `.m`[^Fn1] file that contains over 43,000 graphs that represent Analog Electric Circuits. 
-Each circuit contains an adjacency matrix, node labels representing the various components in each circuit, and a graph-level label representing the performance of the circuit.[^Fn2]
+The current data consists of two MATLAB `.m`[^Fn1] files.
+The first contains over 43,000 graphs that represent Analog Electric Circuits.[^Fn2] 
+The second contains over 32,612 graphs representing aircraft Thermal Management Systems (TMSs).[^Fn3]
+Each circuit contains an adjacency matrix, node labels representing the various components, and a graph-level label representing the performance of the circuit.[^Fn4]
+
 
 ## Required Python Libraries
 Most of the libraries used are pre-built into Python, but please ensure that you have the following:
@@ -47,4 +50,6 @@ If you notice anything unexpected, please open an [issue](https://github.com/ant
 If you have any questions, feel free [to discuss them with us](https://github.com/anthonysirico/GDL-for-Engineering-Design/discussions).
 
 [^Fn1]: MATLAB is not required to run this script. But, if you wish to manipulate any of the raw data, MATLAB or Octave is required.
-[^Fn2]: D. R. Herber, T. Guo, J. T. Allison. 'Enumeration of architectures with perfect matchings.' ASME Journal of Mechanical Design, 139(5), p. 051403, May 2017. doi: 10.1115/1.4036132
+[^Fn2]: A. Sirico Jr, D. R. Herber. "On the use of geometric deep learning for the iterative classification and down-selection of analog electric circuits." ASME Journal of Mechanical Design, 146(5), p. 051703, May 2024. doi: [10.1115/1.4063659](https://doi.org/10.1115/1.4063659)
+[^Fn3]: A. Sirico Jr, D. R. Herber. "Geometric deep learning towards the iterative classification of graph-based aircraft thermal management systems." In AIAA 2024 Science and Technology Forum and Exposition, Orlando, FL, USA, Jan 2024. doi: [10.2514/6.2024-0684](https://doi.org/10.2514/6.2024-0684)
+[^Fn4]: D. R. Herber, T. Guo, J. T. Allison. 'Enumeration of architectures with perfect matchings.' ASME Journal of Mechanical Design, 139(5), p. 051403, May 2017. doi: 10.1115/1.4036132
